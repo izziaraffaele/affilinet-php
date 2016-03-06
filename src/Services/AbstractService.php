@@ -20,10 +20,11 @@ abstract class AbstractService{
         // sign the request
         $requestMessageKey = ucfirst($method).'RequestMessage';
 
-        $response = $this->client->$method([
+        $params = array_merge([
             'CredentialToken' => $this->auth->getToken(),
-            $requestMessageKey => array_shift($params)
-        ]);
+        ],$params[0]);
+
+        $response = $this->client->$method($params);
 
         return new Response( $response );
     }

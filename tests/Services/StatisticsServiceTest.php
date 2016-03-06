@@ -21,14 +21,16 @@ class StatisticsServiceTest extends \PHPUnit_Framework_TestCase{
         $service = new StatisticsService($authMock);
 
         $response = $service->getSubIdStatistics([
-            'StartDate' => strtotime("-2 weeks"),
-            'EndDate' => strtotime("today"),
-            'ProgramIds' => [7964],
-            'ProgramTypes' => 'PayPerSaleLead',
-            'SubId' => '',
-            'MaximumRecords' => '100',
-            'TransactionStatus' => 'Confirmed',
-            'ValuationType' => 'DateOfRegistration'
+                'GetSubIdStatisticsRequestMessage' => [
+                'StartDate' => strtotime("-2 weeks"),
+                'EndDate' => strtotime("today"),
+                'ProgramIds' => [7964],
+                'ProgramTypes' => 'PayPerSaleLead',
+                'SubId' => '',
+                'MaximumRecords' => '100',
+                'TransactionStatus' => 'Confirmed',
+                'ValuationType' => 'DateOfRegistration'
+            ]
         ]);
 
         $this->assertInstanceOf('\Affilinet\Contracts\ResponseInterface', $response );
