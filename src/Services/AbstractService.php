@@ -18,8 +18,6 @@ abstract class AbstractService{
     public function __call($method, array $params)
     {
         // sign the request
-        $requestMessageKey = ucfirst($method).'RequestMessage';
-
         $params = array_merge([
             'CredentialToken' => $this->auth->getToken(),
         ],$params[0]);
