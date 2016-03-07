@@ -12,7 +12,7 @@ class Response implements ResponseInterface{
 
     public function body()
     {
-        return (array) $this->soapResponse;
+        return json_decode( json_encode($this->soapResponse), TRUE );
     }
 
     public function errors()
